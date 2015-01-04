@@ -48,7 +48,7 @@ function logout() {
 
 // API call to validate token
 function token(username, apiToken) {
-  return new Promise(function(resolve, reject) {
+  return new Promise( (resolve, reject) => {
     if (username === 'test' && apiToken === '123') {
       resolve({username: username, token: apiToken});
     } else {
@@ -59,7 +59,7 @@ function token(username, apiToken) {
 
 // API call to validate login
 function login(username, password) {
-  return new Promise(function(resolve, reject) {
+  return new Promise( (resolve, reject) => {
     if (username === 'test' && password === 'test') {
       resolve({username: username, token: '123'});
     } else {
