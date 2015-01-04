@@ -16,14 +16,11 @@ var userStore = Fynx.createSimpleStore(immutable.Map());
 // set userStore when logged in
 actions.loginComplete.listen((userData) => userStore(userData));
 
-// set username in sessionStorage
-userStore.listen((userData) => sessionStorage.setItem('username', userData.get('username')));
-
-// set user as logged in between page reloads
-if (sessionStorage.getItem('username')) userStore({username: sessionStorage.getItem('username')});
+// set sessionStore when logged in
+actions.loginComplete.listen((userData) => sessionStorage.setItem('loggedIn', 'true'));
 
 // setup listener to talk with API
-actions.loginAttempt.listen( credentials => 
+actions.loginAttempt.listen( (credentials) => 
   login(credentials.username, credentials.password)
     .then((userData) => actions.loginComplete(userData))
 );
@@ -33,7 +30,7 @@ actions.logout.listen( () => logout());
 
 // logout
 function logout() {
-  sessionStorage.removeItem('username');
+  sessionStorage.removeItem('loggedIn');
   userStore({username: '', password: ''});
 }
 
@@ -141,8 +138,8 @@ var Login = React.createClass({
     if (this.state.promise) this.state.promise.cancel();
   },
   render() {
-    // Show message if user already logged
-    if (this.state.user.get('username')) {
+    // Show message if user already loggedin
+    if (this.state.user.get('username') || sessionStorage.getItem('loggedIn')) {
       return (
         <div className="row" style={pageSize}>
           <div className="card">
