@@ -44,7 +44,6 @@ function logout() {
   localStorage.removeItem('username');
   localStorage.removeItem('token');
   userStore({});
-
 }
 
 // API call to validate token
