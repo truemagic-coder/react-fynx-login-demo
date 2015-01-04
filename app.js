@@ -225,7 +225,7 @@ var Login = React.createClass({
                 <button
                   className="btn waves-effect waves-light"
                   type="submit" name="action">
-                    Submit
+                    Login
                     <i
                       className="mdi-content-send right">
                     </i>

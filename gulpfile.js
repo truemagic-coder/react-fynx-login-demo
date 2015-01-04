@@ -10,14 +10,12 @@ var gulp = require('gulp'),
   watchify = require('watchify'),
   browserify = require('browserify'),
   to5ify = require('6to5ify'),
-  envify = require('envify'),
   reactify = require('reactify');
 
 var bundler = watchify(browserify('./app.js', watchify.args));
 // add any other browserify options or transforms here
-bundler.transform(reactify);
-bundler.transform(envify);
 bundler.transform(to5ify);
+bundler.transform(reactify);
 bundler.on('update', bundle); // on any dep update, runs the bundler
 
 function bundle() {
