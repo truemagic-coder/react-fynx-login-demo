@@ -37,7 +37,7 @@ function bundle() {
     .pipe(gulp.dest('./public/js'));
 }
 
-gulp.task('js', bundle);
+gulp.task('js', ['clean_site'], bundle);
 
 gulp.task('clean_bower', function(cb) {
   del(['bower_components'], cb);
@@ -52,12 +52,12 @@ gulp.task('bower', ['clean_bower'], function() {
     .pipe(gulp.dest('bower_components'));
 });
 
-gulp.task('materialize', ['bower'], function() {
+gulp.task('materialize', ['bower', 'clean_site'], function() {
   return gulp.src('bower_components/materialize/bin/materialize.css')
     .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('fonts', ['bower'], function() {
+gulp.task('fonts', ['bower', 'clean_site'], function() {
   return gulp.src('bower_components/materialize/font/**/*')
     .pipe(gulp.dest('public/font'));
 });
