@@ -13,7 +13,7 @@ var actions = Fynx.createAsyncActions([
 // create store
 var userStore = Fynx.createSimpleStore(immutable.Map());
 
-// save userData to storage when logged in
+// save userData to storage on login
 actions.loginComplete.listen((userData) => saveInStorage(userData));
 
 // setup listener to talk with API
