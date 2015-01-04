@@ -119,7 +119,7 @@ var Login = React.createClass({
       // If it failed because it was cancelled, ignore it.
       if (promise.cancelled()) return;
       this.setState({error: reason});
-      // set inputs as invalid on forms
+      // set inputs as invalid on form
       this.refs.inputPassword.getDOMNode().classList.add('invalid');
       this.refs.inputUsername.getDOMNode().classList.add('invalid');
     });
