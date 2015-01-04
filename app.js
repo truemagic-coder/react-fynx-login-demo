@@ -13,11 +13,8 @@ var actions = Fynx.createAsyncActions([
 // create store
 var userStore = Fynx.createSimpleStore(immutable.Map());
 
-// set userStore when logged in
-actions.loginComplete.listen((userData) => userStore(userData));
-
-// set sessionStore when logged in
-actions.loginComplete.listen((userData) => sessionStorage.setItem('loggedIn', 'true'));
+// set userStore and sessionStore when logged in
+actions.loginComplete.listen((userData) => saveInStorage(userData));
 
 // setup listener to talk with API
 actions.loginAttempt.listen( (credentials) => 
@@ -28,17 +25,44 @@ actions.loginAttempt.listen( (credentials) =>
 // setup listener to logout
 actions.logout.listen( () => logout());
 
-// logout
-function logout() {
-  sessionStorage.removeItem('loggedIn');
-  userStore({username: '', password: ''});
+// on app load check if user is already signed in annd validate
+// if valid save to storage
+if (localStorage.getItem('username') && localStorage.getItem('token')) {
+  token(localStorage.getItem('username'), localStorage.getItem('token'))
+    .then((userData) => userStore(userData));
 }
 
-// API call
+// save userData to storage
+function saveInStorage(userData) {
+  localStorage.setItem('username', userData.username);
+  localStorage.setItem('token', userData.token);
+  userStore(userData);
+}
+
+// logout
+function logout() {
+  localStorage.removeItem('username');
+  localStorage.removeItem('token');
+  userStore({});
+
+}
+
+// API call to validate token
+function token(username, apiToken) {
+  return new Promise(function(resolve, reject) {
+    if (username === 'test' && apiToken === '123') {
+      resolve({username: username, token: apiToken});
+    } else {
+      reject('Invalid or expired token');
+    }
+  });
+}
+
+// API call to validate login
 function login(username, password) {
   return new Promise(function(resolve, reject) {
     if (username === 'test' && password === 'test') {
-      resolve({username: username});
+      resolve({username: username, token: '123'});
     } else {
       reject('Please enter a valid username and password');
     }
@@ -138,8 +162,8 @@ var Login = React.createClass({
     if (this.state.promise) this.state.promise.cancel();
   },
   render() {
-    // Show message if user already loggedin
-    if (this.state.user.get('username') || sessionStorage.getItem('loggedIn')) {
+    // Show message if user already signed in
+    if (this.state.user.get('username') && this.state.user.get('token')) {
       return (
         <div className="row" style={pageSize}>
           <div className="card">
