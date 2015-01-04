@@ -10,3 +10,4 @@
 - sudo npm install
 - run the app in development: gulp & the server is started on http://localhost:9000
 - warning: this was coded to be a demo app only - it is not suitable for production without modification
+- warning: the apps usage of localStorage and Fynx stores should not be used in production without serious modification as it is insecure

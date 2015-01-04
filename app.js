@@ -14,10 +14,10 @@ var actions = Fynx.createAsyncActions([
 // create store
 var userStore = Fynx.createSimpleStore(immutable.Map());
 
-// set userStore if logged in
+// set userStore when logged in
 actions.loginComplete.listen((userData) => userStore(userData));
 
-// set userStore in localStorage
+// set username in localStorage
 userStore.listen((userData) => storage.set('username', userData.get('username')));
 
 // set user as logged in between page reloads
