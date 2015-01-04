@@ -1,8 +1,7 @@
 'use strict';
 var React = require('react'),
   Fynx = require('fynx'),
-  immutable = require('immutable'),
-  storage = require('store');
+  immutable = require('immutable');
 
 // create actions
 var actions = Fynx.createAsyncActions([
@@ -17,11 +16,11 @@ var userStore = Fynx.createSimpleStore(immutable.Map());
 // set userStore when logged in
 actions.loginComplete.listen((userData) => userStore(userData));
 
-// set username in localStorage
-userStore.listen((userData) => storage.set('username', userData.get('username')));
+// set username in sessionStorage
+userStore.listen((userData) => sessionStorage.setItem('username', userData.get('username')));
 
 // set user as logged in between page reloads
-if (storage.get('username')) userStore({username: storage.get('username')});
+if (sessionStorage.getItem('username')) userStore({username: sessionStorage.getItem('username')});
 
 // setup listener to talk with API
 actions.loginAttempt.listen( credentials => 
@@ -34,7 +33,7 @@ actions.logout.listen( () => logout());
 
 // logout
 function logout() {
-  storage.remove('username');
+  sessionStorage.removeItem('username');
   userStore({username: '', password: ''});
 }
 
