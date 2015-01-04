@@ -9,5 +9,4 @@
 - sudo npm install -g gulp
 - sudo npm install
 - run the app in development: gulp & the server is started on http://localhost:9000
-- warning: this was coded to be a demo app only - it is not suitable for production without modification
 - warning: the plain text password is saved in the state of the login component so you will need to dispose of state when you are done with the login component
