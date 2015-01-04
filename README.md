@@ -11,3 +11,4 @@
 - run the app in development: gulp & the server is started on http://localhost:9000
 - warning: this was coded to be a demo app only - it is not suitable for production without modification
 - warning: the apps usage of sessionStorage and stores should not be used in production as it is insecure
+- warning: the plain text password is saved in the state of the login component after login - this is insecure and should be addressed
