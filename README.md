@@ -9,3 +9,4 @@
 - sudo npm install -g gulp
 - sudo npm install
 - run the app in development: gulp & the server is started on http://localhost:9000
+- warning: this was coded to be a demo app only - it is not suitable for production without modification
