@@ -25,8 +25,8 @@ actions.loginAttempt.listen( (credentials) =>
 // setup listener to logout
 actions.logout.listen( () => logout());
 
-// on app load check if user is already signed in annd validate
-// if valid save to storage
+// on app load check if user is already signed in and validate
+// if valid API token save userData to storage
 if (localStorage.getItem('username') && localStorage.getItem('token')) {
   token(localStorage.getItem('username'), localStorage.getItem('token'))
     .then((userData) => userStore(userData));
