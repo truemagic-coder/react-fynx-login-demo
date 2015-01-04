@@ -119,7 +119,7 @@ var Login = React.createClass({
       // If it failed because it was cancelled, ignore it.
       if (promise.cancelled()) return;
       this.setState({error: reason});
-      // set inputs as invalid on form
+      // add invalid class on inputs
       this.refs.inputPassword.getDOMNode().classList.add('invalid');
       this.refs.inputUsername.getDOMNode().classList.add('invalid');
     });
@@ -142,7 +142,7 @@ var Login = React.createClass({
   handleFocus(evt) {
     var label = evt.target.previousSibling;
     label.classList.add('active');
-    // remove invalid inputs
+    // remove invalid class on inputs
     this.refs.inputPassword.getDOMNode().classList.remove('invalid');
     this.refs.inputUsername.getDOMNode().classList.remove('invalid');
     // set error state to false
