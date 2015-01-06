@@ -11,7 +11,6 @@ var actions = Fynx.createAsyncActions([
 ]);
 
 // create a Flux store to store the user's information
-// in this case what is stored is a username and token
 var userStore = Fynx.createSimpleStore(immutable.Map());
 
 // handle a login attempt
