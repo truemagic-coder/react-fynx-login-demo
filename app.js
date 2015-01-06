@@ -19,7 +19,7 @@ actions.loginAttempt.listen( (credentials) =>
     .then((userData) => actions.loginComplete(userData))
 );
 
-// API call to validate a login attempt (username and password)
+// fake API call to validate a login attempt (username and password)
 function login(username, password) {
   return new Promise( (resolve, reject) => {
     if (username === 'test' && password === 'test') {
@@ -58,7 +58,7 @@ if (localStorage.getItem('username') && localStorage.getItem('token')) {
     .then((userData) => userStore(userData));
 }
 
-// API call to validate localStorage values (username and token)
+// fake API call to validate localStorage values (username and token)
 function token(username, apiToken) {
   return new Promise( (resolve, reject) => {
     if (username === 'test' && apiToken === '123') {
