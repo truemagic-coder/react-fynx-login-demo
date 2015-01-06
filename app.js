@@ -9,13 +9,6 @@ var api = require('./lib/api'),
   Router = require('react-router'),
   { Route, RouteHandler, DefaultRoute } = Router;
 
-// if a browser has a username and token then validate them
-// if they are valid then save them to the userStore 
-if (localStorage.getItem('username') && localStorage.getItem('token')) {
-  api.token(localStorage.getItem('username'), localStorage.getItem('token'))
-    .then((userData) => userStore(userData));
-}
-
 // register Fynx action listeners
 listeners.register();
 
