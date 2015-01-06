@@ -9,4 +9,4 @@
 - sudo npm install -g gulp
 - sudo npm install
 - run the app in development: gulp & the server is started on http://localhost:9000
-- warning: the plain text password is saved in the state of the login component so you will need to dispose of state when you are done with the login component
+- note: this is the simple example for demo purposes - a more suitable production app is in the ['router'](https://github.com/bevanhunt/react-fynx-login-demo/tree/router) branch
