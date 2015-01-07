@@ -72,4 +72,4 @@ gulp.task('react-server', function () {
   });
 });
 
-gulp.task('default', ['react-server', 'build-site', 'express-server']);
+gulp.task('default', ['react-server', 'build-site']);

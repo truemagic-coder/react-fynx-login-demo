@@ -8,4 +8,4 @@
 - nvm install
 - sudo npm install -g gulp
 - sudo npm install
-- run the app in development: gulp & the server is started on http://localhost:9000
+- run the app in development: gulp (in terminal tab 1) & npm start (in a new terminal 2) & the app is on http://localhost:9000
