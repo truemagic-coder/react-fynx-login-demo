@@ -12,7 +12,13 @@
     "react": "0.12.2",
     "immutable": "3.4.1",
     "react-router": "0.11.6",
-    "co": "4.1.0"
+    "co": "4.1.0",
+    "express": "4.10.7",
+    "credential": "ericelliott/credential",
+    "lokijs": "1.1.12",
+    "hyperquest": "1.0.1",
+    "jsonwebtoken": "3.2.0",
+    "body-parser": "1.10.1"
   },
   "devDependencies": {
     "browserify": "6.2.0",
@@ -30,5 +36,8 @@
   },
   "engines": {
     "node": "0.11.14"
+  },
+  "scripts": {
+    "start": "node --harmony api_server.js"
   }
 }

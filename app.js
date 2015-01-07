@@ -1,6 +1,5 @@
 'use strict';
-var api = require('./lib/api'),
-  userStore = require('./lib/stores/user'),
+var userStore = require('./lib/stores/user'),
   React = require('react'),
   Login = require('./lib/view_components/login_form'),
   listeners = require('./lib/listeners'),

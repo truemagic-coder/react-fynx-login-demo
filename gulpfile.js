@@ -60,16 +60,16 @@ gulp.task('fonts', ['bower', 'clean_site'], function() {
     .pipe(gulp.dest('public/font'));
 });
 
-gulp.task('site', ['materialize', 'js', 'fonts', 'clean_site'], function() {
+gulp.task('build-site', ['materialize', 'js', 'fonts', 'clean_site'], function() {
   return gulp.src('./index.html')
     .pipe(gulp.dest('public'));
 });
 
-gulp.task('server', function () {
+gulp.task('react-server', function () {
   connect.server({
     root: 'public',
     port: 9000
   });
 });
 
-gulp.task('default', ['server', 'site']);
+gulp.task('default', ['react-server', 'build-site', 'express-server']);
