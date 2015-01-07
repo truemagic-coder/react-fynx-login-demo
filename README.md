@@ -9,4 +9,4 @@
 - sudo npm install -g gulp
 - sudo npm install
 - run the app in development: gulp & the server is started on http://localhost:9000
-- note: this is the simple example for demo purposes - a more suitable production app is in the ['router'](https://github.com/bevanhunt/react-fynx-login-demo/tree/router) branch
+- note: this is the simple example for Fynx learning purposes - a more fully featured demo app is in the ['full'](https://github.com/bevanhunt/react-fynx-login-demo/tree/full) branch
