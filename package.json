@@ -15,7 +15,8 @@
     "express": "4.10.7",
     "browser-request": "0.3.3",
     "jsonwebtoken": "3.2.0",
-    "body-parser": "1.10.1"
+    "body-parser": "1.10.1",
+    "reqwest": "1.1.5"
   },
   "devDependencies": {
     "browserify": "6.2.0",
